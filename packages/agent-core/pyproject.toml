@@ -1,0 +1,13 @@
+[project]
+name = "liveinsight-agent-core"
+version = "0.1.0"
+description = "Core multimodal, RAG, agent, training, and evaluation modules for LiveInsight Agent."
+requires-python = ">=3.10"
+dependencies = [
+  "pydantic>=2.7.0",
+  "numpy>=1.26.0",
+  "pandas>=2.2.0"
+]
+
+[tool.ruff]
+line-length = 100
