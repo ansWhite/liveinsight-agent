@@ -1,0 +1,17 @@
+[
+  {
+    "id": "p_demo_001",
+    "title": "Demo Phone Pro",
+    "brand": "DemoBrand",
+    "category": "phone",
+    "price": 2899,
+    "stock": 120,
+    "rating": 4.7,
+    "tags": ["camera", "battery", "value"],
+    "attributes": {
+      "camera": "50MP main camera",
+      "battery": "5000mAh",
+      "screen": "6.7 inch OLED"
+    }
+  }
+]

@@ -1,0 +1,33 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://shopping-guide-agent.local/schemas/chat-events.schema.json",
+  "title": "ChatStreamEvent",
+  "oneOf": [
+    {
+      "type": "object",
+      "required": ["type", "content"],
+      "properties": {
+        "type": { "const": "text_delta" },
+        "content": { "type": "string" }
+      }
+    },
+    {
+      "type": "object",
+      "required": ["type", "data"],
+      "properties": {
+        "type": { "const": "product_card" },
+        "data": {
+          "type": "object",
+          "required": ["product_id", "title", "reason"],
+          "properties": {
+            "product_id": { "type": "string" },
+            "title": { "type": "string" },
+            "price": { "type": ["number", "null"] },
+            "image_url": { "type": ["string", "null"] },
+            "reason": { "type": "string" }
+          }
+        }
+      }
+    }
+  ]
+}

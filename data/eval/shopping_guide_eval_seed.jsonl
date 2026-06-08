@@ -1,0 +1,1 @@
+{"id":"eval_001","scenario":"buying_advice","query":"预算3000以内，拍照好、续航强的手机推荐哪个？","expected_products":["p_demo_001"],"golden_chunks":["Demo Phone Pro is positioned as a value-focused phone under 3000 RMB."]}

@@ -1,0 +1,11 @@
+[project]
+name = "shopping-guide-agent-core"
+version = "0.1.0"
+description = "Core modules for a multimodal RAG ecommerce shopping guide Agent."
+requires-python = ">=3.11"
+dependencies = [
+  "pydantic>=2.10.0",
+]
+
+[tool.setuptools.packages.find]
+where = ["."]
