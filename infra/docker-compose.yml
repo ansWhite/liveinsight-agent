@@ -1,4 +1,5 @@
 services:
+  # 结构化商品库：存商品、会话、反馈、检索 trace 等业务数据。
   postgres:
     image: postgres:16
     environment:
@@ -10,11 +11,13 @@ services:
     volumes:
       - postgres_data:/var/lib/postgresql/data
 
+  # 缓存和轻量消息队列：保存会话状态、限流计数、异步任务状态。
   redis:
     image: redis:7
     ports:
       - "6379:6379"
 
+  # 向量数据库：保存商品知识片段 embedding，用于 RAG 语义检索。
   qdrant:
     image: qdrant/qdrant:v1.12.4
     ports:
@@ -23,6 +26,7 @@ services:
     volumes:
       - qdrant_data:/qdrant/storage
 
+  # 对象存储：保存上传的商品文档、图片、营销资料等原始文件。
   minio:
     image: minio/minio:RELEASE.2024-12-18T13-15-44Z
     command: server /data --console-address ":9001"

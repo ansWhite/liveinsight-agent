@@ -1,4 +1,5 @@
 :root {
+  /* 全局设计变量，后续换主题时优先改这里。 */
   color-scheme: light;
   --bg: #f5f7fb;
   --panel: #ffffff;
@@ -21,11 +22,13 @@ body {
 }
 
 .shell {
+  /* 页面外层容器，负责给桌面端留出边距。 */
   min-height: 100vh;
   padding: 32px;
 }
 
 .chat {
+  /* 主聊天工作区：顶部栏、消息区、输入区三段式布局。 */
   width: min(1080px, 100%);
   min-height: calc(100vh - 64px);
   margin: 0 auto;
@@ -64,11 +67,13 @@ h1 {
 }
 
 .messages {
+  /* 消息区独立滚动，避免输入框被长内容挤出屏幕。 */
   padding: 24px 16px;
   overflow: auto;
 }
 
 .bubble {
+  /* 用户和 Agent 的聊天气泡共用基础样式。 */
   max-width: 760px;
   padding: 12px 14px;
   border-radius: 8px;
@@ -86,6 +91,7 @@ h1 {
 }
 
 .cards {
+  /* 商品卡片区域支持响应式多列布局。 */
   display: grid;
   gap: 12px;
   grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
@@ -93,6 +99,7 @@ h1 {
 }
 
 .productCard {
+  /* 单个商品推荐卡片，展示图片占位、标题、价格和推荐理由。 */
   border: 1px solid var(--line);
   border-radius: 8px;
   padding: 12px;
@@ -156,6 +163,7 @@ input {
 }
 
 @media (max-width: 640px) {
+  /* 移动端占满屏幕，更接近原生 App 的聊天体验。 */
   .shell {
     padding: 0;
   }

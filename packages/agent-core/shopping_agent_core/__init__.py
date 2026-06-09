@@ -1,1 +1,1 @@
-"""Core modules for the shopping guide Agent."""
+"""电商智能导购 Agent 的核心能力包。"""

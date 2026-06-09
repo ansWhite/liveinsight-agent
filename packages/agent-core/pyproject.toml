@@ -1,4 +1,6 @@
 [project]
+# Agent 核心包的 Python 项目配置。
+# 后续这里会加入 LangGraph、RAG、评测等核心依赖。
 name = "shopping-guide-agent-core"
 version = "0.1.0"
 description = "Core modules for a multimodal RAG ecommerce shopping guide Agent."
