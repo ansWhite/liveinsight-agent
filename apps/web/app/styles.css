@@ -72,6 +72,11 @@ h1 {
   overflow: auto;
 }
 
+.messageGroup {
+  display: grid;
+  margin-bottom: 12px;
+}
+
 .bubble {
   /* 用户和 Agent 的聊天气泡共用基础样式。 */
   max-width: 760px;
@@ -96,6 +101,7 @@ h1 {
   gap: 12px;
   grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
   max-width: 760px;
+  margin-bottom: 12px;
 }
 
 .productCard {
@@ -146,6 +152,13 @@ h1 {
   justify-content: center;
 }
 
+.iconButton:disabled,
+.sendButton:disabled,
+input:disabled {
+  cursor: not-allowed;
+  opacity: 0.6;
+}
+
 .sendButton {
   background: var(--brand);
   color: #fff;
@@ -162,6 +175,13 @@ input {
   font-size: 14px;
 }
 
+.errorText {
+  flex-basis: 100%;
+  margin: 0 0 0 104px;
+  color: #b42318;
+  font-size: 13px;
+}
+
 @media (max-width: 640px) {
   /* 移动端占满屏幕，更接近原生 App 的聊天体验。 */
   .shell {
@@ -173,5 +193,9 @@ input {
     border-radius: 0;
     border-left: 0;
     border-right: 0;
+  }
+
+  .errorText {
+    margin-left: 0;
   }
 }
