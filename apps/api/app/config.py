@@ -2,23 +2,25 @@ from pydantic_settings import BaseSettings, SettingsConfigDict
 
 
 class Settings(BaseSettings):
-    """统一读取环境变量配置。
-
-    后续接入数据库、向量库和大模型时，尽量都从这里读取配置，
-    避免把密钥、模型名、服务地址硬编码在业务代码里。
-    """
-
     app_env: str = "local"
     app_name: str = "shopping-guide-agent"
+
+    # Qdrant Cloud
     qdrant_url: str = "http://localhost:6333"
+    qdrant_api_key: str | None = None
     qdrant_collection: str = "product_knowledge"
+
+    # LLM (DeepSeek or any OpenAI-compatible)
     openai_api_key: str | None = None
     openai_base_url: str | None = None
-    llm_model: str | None = None
-    embedding_model: str | None = None
+    llm_model: str = "deepseek-chat"
+
+    # Embedding (SiliconFlow bge-m3)
+    siliconflow_api_key: str | None = None
+    embedding_base_url: str = "https://api.siliconflow.cn/v1"
+    embedding_model: str = "BAAI/bge-m3"
 
     model_config = SettingsConfigDict(env_file=".env", extra="ignore")
 
 
-# 全局配置对象，其他模块可以直接 import 使用。
 settings = Settings()
