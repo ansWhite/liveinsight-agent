@@ -25,3 +25,13 @@ class RetrievalChunk(BaseModel):
     text: str
     score: float
     source: str | None = None
+
+
+class ChunkRecord(BaseModel):
+    """Internal record produced by the chunker before embedding and storage."""
+
+    chunk_id: str
+    product_id: str
+    source: str
+    chunk_text: str
+    chunk_index: int
