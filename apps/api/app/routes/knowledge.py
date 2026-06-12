@@ -1,32 +1,27 @@
-from fastapi import APIRouter
+from fastapi import APIRouter, Depends
 from pydantic import BaseModel
+
+from app.deps import get_rag_pipeline
+from shopping_agent_core.rag_pipeline import RAGPipeline
 
 router = APIRouter()
 
 
 class KnowledgeIngestRequest(BaseModel):
-    """商品知识入库请求。
-
-    MVP 阶段先支持直接传入文本内容；后续可以扩展为 PDF、Word、图片、
-    营销活动文档等非结构化资料上传。
-    """
-
     product_id: str
     title: str
     content: str
 
 
 @router.post("/ingest")
-async def ingest_knowledge(request: KnowledgeIngestRequest) -> dict[str, object]:
-    """商品知识入库接口占位实现。
-
-    后续真实流程会包括：文档解析、文本切分、Embedding、向量入库、
-    关键词索引和结构化字段抽取。
-    """
-
+async def ingest_knowledge(
+    request: KnowledgeIngestRequest,
+    pipeline: RAGPipeline = Depends(get_rag_pipeline),
+) -> dict[str, object]:
+    count = await pipeline.ingest(request.product_id, request.title, request.content)
     return {
-        "status": "accepted",
+        "status": "ok",
         "product_id": request.product_id,
         "title": request.title,
-        "chunks_created": 0,
+        "chunks_created": count,
     }
